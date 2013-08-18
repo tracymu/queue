@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="span4">
+  	<h1>Top Rated</h1>
+  </div>
+  <div class = "span8">
+    <% if current_user %>
+      <h1>...Add a Restaurant... </h1>
+
+       <button type="button" class="btn btn-success"><%= link_to 'Add a Restaurant', new_restaurant_path %></button>
+    <% else %>
+       <h2><%= link_to 'Sign Up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %> </h2>
+    <% end %>
+  </div>
+</div>
+
+<div class = "row">
+  <div class = "span4">
+
+    <% @restaurants.first(5).each do |restaurant| %>
+
+      <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+      <p><%= restaurant.website %></p>
+      <p><%= restaurant.city %></p>
+
+    <% end %>
+
+    <p><%= link_to 'See all', restaurant_list_path %></p>
+
+  </div>
+
+
+  <div class="span8">
+
+  <p>Can’t think of where to eat? Always go to the same places?</p>
+  <p> Make every meal count with Queue</p>
+  <hr>
+
+  <h1>Search for friends </h1>
+
+    <%= form_tag user_search_path do %>
+      <%= text_field_tag 'search' %>
+      <%= submit_tag 'go' %>
+    <% end %>
+ 
+    
+  </div>
+
+</div>

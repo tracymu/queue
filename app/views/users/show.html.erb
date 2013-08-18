@@ -1,0 +1,39 @@
+<H1><%= @user.name %></H1>
+
+<% if current_user %>
+
+	<p><%= link_to 'Add as a friend', new_user_friendship_path(@user[:id]) %></p>
+
+	<h2>Queued Restaurants</h2>
+
+	<ul>
+	<% @user.future_visits.each do |future_visit| %>
+		<li><%= link_to future_visit.restaurant.name, restaurant_path(@restaurant) %> </li>
+
+	<% end %>
+	</ul>
+
+	<h2>Visited Restaurants</h2>
+
+
+	<ul>
+	<% @user.visits.each do |visit| %>
+
+		<li><%= link_to visit.restaurant.name, restaurant_path(@restaurant) %></li>
+
+	<% end %>
+	</ul>
+
+
+	<p>Note - these links go to root path - how to make them go to the proper restaurant path?</p>
+
+	</br>
+	</br>
+	 <p>Back to <%= link_to "home", root_path %></p>
+
+
+<% else %>
+
+	<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %> to view <%= @user.name %>'s activity</p>
+	
+<% end %>

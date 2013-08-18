@@ -1,0 +1,71 @@
+This is my GA Final. A social restaurant app. 
+
+```ruby
+class User < ActiveRecord::Base
+
+	has_many :visits
+	has_many :visited_restaurants, through visits class_name: Restaurant
+	has_many :friendships, source :owner
+	has_many :friends, through :friendships, class_name: User
+	has_many :future_visits
+
+end
+
+
+class Restaurant < ActiveRecord::Base
+
+	has_many :visits
+	has_many :visitors, through :visits, class_name: User 
+	belongs_to :city
+	has_many :future_visits
+
+end
+
+
+class Visit < ActiveRecord::Base
+
+	belongs_to :user
+	belongs_to :restaurant
+	has_one :review
+
+end
+
+
+class Friendship < ActiveRecord::Base
+
+	belongs_to :owner, class_name: User
+	belongs_to :friend, class_name: User
+
+
+end
+
+class City < ActiveRecord::Base
+
+has_many	 :restaurants
+
+end
+
+
+class Future_Visit < ActiveRecord::Base
+
+	belongs_to :restaurants
+	belongs_to :users
+
+end
+
+class Review < ActiveRecord::Base
+
+	belongs_to :visit
+
+end
+```
+
+1. App description
+2. User stories
+3. Data model
+4. Wireframes
+5. Now I have to create a git repository
+6. Then I have to make a new rails app
+7. then I did this to find out was diff was 
+
+WHAT ABOUT THIS?

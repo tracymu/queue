@@ -1,0 +1,48 @@
+<h1><%= @restaurant.name %></h1>
+
+<div class = "row">
+
+	<div class = "span7">
+<p>Website: <%= link_to @restaurant.website, @restaurant.website %> </p>
+<p>Location: <%= @restaurant.city %> </p>
+<p>Average Rating By Your Friends:  <%= @restaurant.visits.average("rating").to_s %></p>
+
+<em>If the details of this restaurant have changed, please submit a <a href="mailto:admin@moomumedia.com?Subject=Restaurant%20Update">change request</a></em>
+</div>
+
+<div class = "span5">
+<!-- button for later, only show if you haven't been here -->
+
+<!-- e.g. if current_user.visit.exists?(@restaurant)...? but not quite like that. --> 
+ <button type="button" class="btn btn-success">I've Been Here!</button>
+ <%= link_to "I've been here", new_restaurant_visit_path(@restaurant) %>
+</br>
+</br>
+
+</br>
+<!-- If restaurant is not in your queue, show this -->
+<!-- so I need another if statement here -->
+
+
+<p>Want to go here in the future? Add to your Queue</p>
+<button type="button" class="btn btn-success">Add to My Queue!</button>
+<%= link_to "Add to my queue", new_restaurant_future_visit_path(@restaurant) %>
+</br>
+</br>
+
+	</div>
+ </div>
+
+
+<h3>Reviews by your friends</h3>
+
+
+<% @restaurant.visits.each do |visit| %>
+	<strong><%= visit.user.name %></strong>
+	<p>Rated: <%= render_stars(visit.rating) %></p>
+	<p><%= visit.review %></p>
+<% end %>
+
+
+</br>
+</br>

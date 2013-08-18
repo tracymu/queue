@@ -1,0 +1,27 @@
+<h1>I don't want this page to show</h1>
+
+<p>I think it might be a similar problem to future_visits_controller</p>
+
+<p>I want to do something in my friendships controller to just create the friendship</p>
+
+
+	<code>
+		def new </br>
+		@friendship = @user.friendships.new</br>
+   create</br>
+	end</br>
+</br>
+  def create</br>
+</br>    @friendship = @user.friendships.new 
+   </br> @friendship.user = current_user
+    </br>if @friendship.save
+      </br>redirect_to user_path(@user)
+    </br>else
+      </br>render 'new'
+    </br>end
+  </br>end
+</code>
+
+
+
+ <p>Back to <%= link_to "home", root_path %></p>
