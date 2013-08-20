@@ -1,6 +1,6 @@
 class FutureVisitsController < ApplicationController
 
-  before_action :find_restaurant, :only => [:new, :create]
+  before_action :find_restaurant, :only => [:new, :create, :destroy]
 
   def new
 		@future_visit = @restaurant.future_visits.new
@@ -25,8 +25,9 @@ class FutureVisitsController < ApplicationController
 
 
   def destroy
+    @future_visit = FutureVisit.find(params[:id])
     @future_visit.destroy
-    redirect_to user_path
+    redirect_to restaurant_path(@restaurant)
   end 
 
 

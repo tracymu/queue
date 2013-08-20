@@ -1,3 +1,4 @@
+Restaurant.delete_all
 Restaurant.create(:name => 'Crinitis', :website => 'http://www.crinitis.com.au/', :city => 'Sydney')
 Restaurant.create(:name => 'The Grounds', :website => 'http://groundsroasters.com/ ', :city => 'Sydney')
 Restaurant.create(:name => 'Movida', :website => 'http://movida.com.au/sydney/', :city => 'Sydney')
@@ -26,6 +27,7 @@ Restaurant.create(:name => 'Passion Tree', :website => 'http://www.passiontree.c
 Restaurant.create(:name => 'Alfred and Constance', :website => 'http://www.alfredandconstance.com.au/', :city => 'Brisbane')
 Restaurant.create(:name => 'Vintaged Bar and Grill', :website => 'http://www.alfredandconstance.com.au/', :city => 'Brisbane')
 
+User.delete_all
 User.create(:name => 'Nicolas', :email => 'Nicolas@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 User.create(:name => 'Croc', :email => 'croc@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 User.create(:name => 'Tracy', :email => 'Tracy@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
@@ -38,7 +40,7 @@ User.create(:name => 'Graham', :email => 'graham@moomumedia.com', :password => '
 User.create(:name => 'Nerissa', :email => 'nerissa@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 
 
-
+FutureVisit.delete_all
 FutureVisit.create(:user_id => 1, :restaurant_id => 2)
 FutureVisit.create(:user_id => 3, :restaurant_id => 1)
 FutureVisit.create(:user_id => 4, :restaurant_id => 8)
@@ -51,7 +53,7 @@ FutureVisit.create(:user_id => 6, :restaurant_id => 3)
 FutureVisit.create(:user_id => 4, :restaurant_id => 12)
 
 
-
+Visit.delete_all
 Visit.create(:user_id => 3, :restaurant_id => 1)
 Visit.create(:user_id => 2, :restaurant_id => 2)
 Visit.create(:user_id => 5, :restaurant_id => 3)

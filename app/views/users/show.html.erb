@@ -1,14 +1,31 @@
 <H1><%= @user.name %></H1>
 
-<% if current_user %>
 
-	<p><%= link_to 'Add as a friend', new_user_friendship_path(@user[:id]) %></p>
+<!-- Oh my god how do I list these stupid friendships -->
+<% if @user.friendships.where(:owner_id => @user.id) && @user == current_user %>
+<p>You have friend requests from 
+	<% @user.friendships.where(:friend_id == current_user.id && :accepted == nil).each do |friendship|%>
+	<p><%= User.first.name %></p>
+
+	<% end %>
+
+
+</p>
+
+<% end %>
+
+<!-- Me trying to list those stupid friendships -->
+
+
+<% if current_user %>
+	
+	<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post' %></p>
 
 	<h2>Queued Restaurants</h2>
 
 	<ul>
 	<% @user.future_visits.each do |future_visit| %>
-		<li><%= link_to future_visit.restaurant.name, restaurant_path(@restaurant) %> </li>
+		<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
 
 	<% end %>
 	</ul>
@@ -19,7 +36,7 @@
 	<ul>
 	<% @user.visits.each do |visit| %>
 
-		<li><%= link_to visit.restaurant.name, restaurant_path(@restaurant) %></li>
+		<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
 
 	<% end %>
 	</ul>

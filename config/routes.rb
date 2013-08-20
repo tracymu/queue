@@ -12,7 +12,7 @@ RestaurantApp::Application.routes.draw do
 
   root 'restaurants#index'
 
- resources :restaurants do
+  resources :restaurants do
     resources :visits
     resources :future_visits
   end

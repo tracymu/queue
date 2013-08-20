@@ -1,9 +1,9 @@
 <h1><%= @restaurant.name %></h1>
-
+<% if current_user %>
 <div class = "row">
 
 	<div class = "span7">
-<p>Website: <%= link_to @restaurant.website, @restaurant.website %> </p>
+<p>Website: <%= link_to @restaurant.website, @restaurant.website, :target => 'blank' %> </p>
 <p>Location: <%= @restaurant.city %> </p>
 <p>Average Rating By Your Friends:  <%= @restaurant.visits.average("rating").to_s %></p>
 
@@ -13,21 +13,36 @@
 <div class = "span5">
 <!-- button for later, only show if you haven't been here -->
 
+
+
 <!-- e.g. if current_user.visit.exists?(@restaurant)...? but not quite like that. --> 
- <button type="button" class="btn btn-success">I've Been Here!</button>
- <%= link_to "I've been here", new_restaurant_visit_path(@restaurant) %>
+
+<% if current_user.visits.exists?(:restaurant_id => @restaurant.id) %>
+
+<p>You've been to <%= @restaurant.name %> </p>
+
+<% else %>
+
+
+ <%= link_to "I've been here", new_restaurant_visit_path(@restaurant), :class => 'btn btn-success' %>
 </br>
+<% end %>
 </br>
 
 </br>
 <!-- If restaurant is not in your queue, show this -->
 <!-- so I need another if statement here -->
 
+<% if future_visit = current_user.future_visits.where(:restaurant_id => @restaurant.id).first %>
+	<p><%= @restaurant.name %> is in your Queue  <%= link_to "Remove from Queue", restaurant_future_visit_path(@restaurant, future_visit), :confirm => 'Are you sure?', method: :delete %></p>
+
+
+<% else %>
 
 <p>Want to go here in the future? Add to your Queue</p>
-<button type="button" class="btn btn-success">Add to My Queue!</button>
-<%= link_to "Add to my queue", new_restaurant_future_visit_path(@restaurant) %>
+<%= link_to "Add to my queue", new_restaurant_future_visit_path(@restaurant), :class => 'btn btn-primary' %>
 </br>
+<% end %>
 </br>
 
 	</div>
@@ -46,3 +61,8 @@
 
 </br>
 </br>
+<% else %>
+
+	<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %> to add restaurants</p>
+	
+<% end %>

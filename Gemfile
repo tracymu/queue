@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'debugger'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -43,6 +44,13 @@ end
 group :development, :test do
 	gem 'sqlite3'
 end
+
+
+group :development do
+	gem 'quiet_assets'
+	gem 'thin' 
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

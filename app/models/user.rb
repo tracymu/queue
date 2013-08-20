@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :visits
   has_many :future_visits
-  has_many :friendships
+  
+  has_many :friendships, :foreign_key => :owner_id
+  has_many :friends, :through => :friendships
   
 end
