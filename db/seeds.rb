@@ -40,32 +40,61 @@ User.create(:name => 'Graham', :email => 'graham@moomumedia.com', :password => '
 User.create(:name => 'Nerissa', :email => 'nerissa@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 
 
-FutureVisit.delete_all
-FutureVisit.create(:user_id => 1, :restaurant_id => 2)
-FutureVisit.create(:user_id => 3, :restaurant_id => 1)
-FutureVisit.create(:user_id => 4, :restaurant_id => 8)
-FutureVisit.create(:user_id => 7, :restaurant_id => 7)
-FutureVisit.create(:user_id => 3, :restaurant_id => 2)
-FutureVisit.create(:user_id => 2, :restaurant_id => 4)
-FutureVisit.create(:user_id => 3, :restaurant_id => 4)
-FutureVisit.create(:user_id => 8, :restaurant_id => 4)
-FutureVisit.create(:user_id => 6, :restaurant_id => 3)
-FutureVisit.create(:user_id => 4, :restaurant_id => 12)
+# FutureVisit.delete_all
+# FutureVisit.create(:user_id => 1, :restaurant_id => 2)
+# FutureVisit.create(:user_id => 3, :restaurant_id => 1)
+# FutureVisit.create(:user_id => 4, :restaurant_id => 8)
+# FutureVisit.create(:user_id => 7, :restaurant_id => 7)
+# FutureVisit.create(:user_id => 3, :restaurant_id => 2)
+# FutureVisit.create(:user_id => 2, :restaurant_id => 4)
+# FutureVisit.create(:user_id => 3, :restaurant_id => 4)
+# FutureVisit.create(:user_id => 8, :restaurant_id => 4)
+# FutureVisit.create(:user_id => 6, :restaurant_id => 3)
+# FutureVisit.create(:user_id => 4, :restaurant_id => 12)
 
 
-Visit.delete_all
-Visit.create(:user_id => 3, :restaurant_id => 1)
-Visit.create(:user_id => 2, :restaurant_id => 2)
-Visit.create(:user_id => 5, :restaurant_id => 3)
-Visit.create(:user_id => 8, :restaurant_id => 4)
-Visit.create(:user_id => 7, :restaurant_id => 5)
-Visit.create(:user_id => 9, :restaurant_id => 6)
-Visit.create(:user_id => 1, :restaurant_id => 7)
-Visit.create(:user_id => 6, :restaurant_id => 8)
-Visit.create(:user_id => 3, :restaurant_id => 9)
-Visit.create(:user_id => 2, :restaurant_id => 10)
+# Visit.delete_all
+# Visit.create(:user_id => 3, :restaurant_id => 1)
+# Visit.create(:user_id => 2, :restaurant_id => 2)
+# Visit.create(:user_id => 5, :restaurant_id => 3)
+# Visit.create(:user_id => 8, :restaurant_id => 4)
+# Visit.create(:user_id => 7, :restaurant_id => 5)
+# Visit.create(:user_id => 9, :restaurant_id => 6)
+# Visit.create(:user_id => 1, :restaurant_id => 7)
+# Visit.create(:user_id => 6, :restaurant_id => 8)
+# Visit.create(:user_id => 3, :restaurant_id => 9)
+# Visit.create(:user_id => 2, :restaurant_id => 10)
 
 
 
+# Visit.delete_all
+# Visit.create(:user_id => 3, :restaurant_id => 1, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 2, :restaurant_id => 2, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 5, :restaurant_id => 3, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 8, :restaurant_id => 4, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 7, :restaurant_id => 5, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 9, :restaurant_id => 6, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 1, :restaurant_id => 7, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 6, :restaurant_id => 8, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 3, :restaurant_id => 9, :rating => 3, :review => "It was nice")
+# Visit.create(:user_id => 2, :restaurant_id => 10, :rating => 3, :review => "It was nice")
 
+
+# Friendship.delete_all
+# Friendship.create(:owner_id => 15, :friend_id => 16, :accepted => nil)
+# Friendship.create(:owner_id => 26, :friend_id => 27, :accepted => true)
+# Friendship.create(:owner_id => 16, :friend_id => 17, :accepted => nil)
+# Friendship.create(:owner_id => 17, :friend_id => 18, :accepted => true)
+# Friendship.create(:owner_id => 20, :friend_id => 21, :accepted => true)
+# Friendship.create(:owner_id => 20, :friend_id => 22, :accepted => nil)
+# Friendship.create(:owner_id => 19, :friend_id => 25, :accepted => true)
+# Friendship.create(:owner_id => 19, :friend_id => 21, :accepted => true)
+# Friendship.create(:owner_id => 26, :friend_id => 25, :accepted => nil)
+# Friendship.create(:owner_id => 20, :friend_id => 16, :accepted => nil)
+# Friendship.create(:owner_id => 20, :friend_id => 17, :accepted => nil)
+# Friendship.create(:owner_id => 20, :friend_id => 18, :accepted => nil)
+# Friendship.create(:owner_id => 17, :friend_id => 18, :accepted => true)
+# Friendship.create(:owner_id => 18, :friend_id => 19, :accepted => true)
+# Friendship.create(:owner_id => 19, :friend_id => 20, :accepted => true)
+# Friendship.create(:owner_id => 20, :friend_id => 19, :accepted => true)
 

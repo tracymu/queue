@@ -1,56 +1,73 @@
 <H1><%= @user.name %></H1>
 
+<!-- Only logged in users can see this page information -->
 
-<!-- Oh my god how do I list these stupid friendships -->
-<% if @user.friendships.where(:owner_id => @user.id) && @user == current_user %>
-<p>You have friend requests from 
-	<% @user.friendships.where(:friend_id == current_user.id && :accepted == nil).each do |friendship|%>
-	<p><%= User.first.name %></p>
-
-	<% end %>
+<% if @user == current_user || Friendship.exists?(:friend_id =>current_user.id, :owner_id => @user.id) %>
 
 
-</p>
+	<!-- Display depends on whether this is your own user page or someone elses -->
 
-<% end %>
-
-<!-- Me trying to list those stupid friendships -->
+	<% if current_user == @user  %>
 
 
-<% if current_user %>
-	
-	<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post' %></p>
+		<% if Friendship.exists?(:friend_id => current_user.id, :accepted => nil) %>
+			
+			<p>You have friend requests from </p>
+			<ul>
+				<% Friendship.where(:friend_id => current_user.id, :accepted => nil).each do |friendship| %>
+					<li><%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'  %> </li>
+				<% end %>
+			</ul>
+			<% end %>
 
-	<h2>Queued Restaurants</h2>
-
-	<ul>
-	<% @user.future_visits.each do |future_visit| %>
-		<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
-
-	<% end %>
-	</ul>
-
-	<h2>Visited Restaurants</h2>
-
-
-	<ul>
-	<% @user.visits.each do |visit| %>
-
-		<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
-
-	<% end %>
-	</ul>
+			<% else %>
+				
+				<% if Friendship.where(:friend_id => @user.id) %>
 
 
-	<p>Note - these links go to root path - how to make them go to the proper restaurant path?</p>
+				<% else %>
 
-	</br>
-	</br>
-	 <p>Back to <%= link_to "home", root_path %></p>
+				<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post' %></p>
+
+			<% end %>
+
+			<% end %>
+
+
+			<h2>Queued Restaurants</h2>
+			<ul>
+				<% @user.future_visits.each do |future_visit| %>
+					<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
+				<% end %>
+			</ul>
+
+			<h2>Visited Restaurants</h2>
+
+			<ul>
+				<% @user.visits.each do |visit| %>
+					<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
+				<% end %>
+			</ul>
+
+
+		<h2>Friends</h2>
+
+			<ul>
+				<% Friendship.where(:friend_id => current_user.id, :accepted => true).each do |friendship| %>
+				<li><%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> </li>
+				<% end %>
+			</ul>
+
+
+
+
+
+<% elsif current_user %>
+
+<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post' %> to see <%= @user.name %>'s Queue </p>
 
 
 <% else %>
-
 	<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %> to view <%= @user.name %>'s activity</p>
 	
 <% end %>
