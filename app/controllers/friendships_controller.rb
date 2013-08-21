@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
 	  # 	Friendship.where(:friend_id => @user.id, :owner_id => current_user.id).accepted = true
 	  #   redirect_to user_path(@user), :notice => "Friendship accepted"  
 	  # else 
-	    redirect_to user_path(@user), :notice => "Friend request sent"  
+	  redirect_to user_path(@user), :notice => "Friend request sent"  
 	  # end
 
   end

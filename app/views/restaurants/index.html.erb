@@ -20,7 +20,7 @@
 
       <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
       <p><%= restaurant.city %></p>
-
+      <hr>
     <% end %>
 
     <p><%= link_to 'See all', restaurant_list_path %></p>
@@ -29,18 +29,19 @@
 
 
   <div class="span8">
-  <% unless current_user %>
-  <p>Can’t think of where to eat? Always go to the same places?</p>
-  <p> Make every meal count with Queue</p>
-  <hr>
-  <% end %>
-  <h1>Search for friends </h1>
+    <% unless current_user %>
+      <p>Can’t think of where to eat? Always go to the same places?</p>
+      <p> Make every meal count with Queue</p>
+      <hr>
+    <% end %>
+    
+    <h1>Search </h1>
 
-    <%= form_tag user_search_path do %>
+    <%= form_tag search_path do %>
       <%= text_field_tag 'search' %>
       <%= submit_tag 'go' %>
     <% end %>
- 
+   
     
   </div>
 

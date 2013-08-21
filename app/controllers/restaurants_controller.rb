@@ -30,7 +30,6 @@ class RestaurantsController < ApplicationController
 			# redirect_to restaurant_path(@restaurant), :notice => "Restaurant successfully added"			
 		end
 
-
 	end
 
 

@@ -1,6 +1,8 @@
-<h1> I don't really want to show this,  I just want that button to make it go back to the restaurant page</h1>
+<h2>Who would you like to recommend <%= @restaurant.name %> to?</h2>
 
-<p>So I want to make it go straight to the create action - but then that isn't working</p>
-
- <p>Back to <%= link_to "home", root_path %></p>
+	<ul>
+		<% current_user.friendships.where(:accepted => true).each do |friendship| %>
+			<li><%= link_to friendship.friend.name, recommend_restaurant_path(@restaurant, friendship.friend), :method => 'post' %></li>
+		<% end %>
+	</ul>
 

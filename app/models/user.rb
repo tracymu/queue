@@ -10,5 +10,10 @@ class User < ActiveRecord::Base
   
   has_many :friendships, :foreign_key => :owner_id
   has_many :friends, :through => :friendships
+
+  def friendship_status_with(user)
+  	friendship = friendships.where(:friend_id => user.id).first
+  	friendship.accepted? ? "Friend" : "Friendship pending"
+  end
   
 end

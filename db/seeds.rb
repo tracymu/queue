@@ -1,5 +1,5 @@
 Restaurant.delete_all
-Restaurant.create(:name => 'Crinitis', :website => 'http://www.crinitis.com.au/', :city => 'Sydney')
+crinitis = Restaurant.create(:name => 'Crinitis', :website => 'http://www.crinitis.com.au/', :city => 'Sydney')
 Restaurant.create(:name => 'The Grounds', :website => 'http://groundsroasters.com/ ', :city => 'Sydney')
 Restaurant.create(:name => 'Movida', :website => 'http://movida.com.au/sydney/', :city => 'Sydney')
 Restaurant.create(:name => 'Momofuku', :website => 'http://momofuku.com/press-kit-post/seiobo/', :city => 'Sydney')
@@ -28,7 +28,7 @@ Restaurant.create(:name => 'Alfred and Constance', :website => 'http://www.alfre
 Restaurant.create(:name => 'Vintaged Bar and Grill', :website => 'http://www.alfredandconstance.com.au/', :city => 'Brisbane')
 
 User.delete_all
-User.create(:name => 'Nicolas', :email => 'Nicolas@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
+nicolas = User.create(:name => 'Nicolas', :email => 'Nicolas@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 User.create(:name => 'Croc', :email => 'croc@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 User.create(:name => 'Tracy', :email => 'Tracy@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 User.create(:name => 'Aidan', :email => 'aidan@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
@@ -40,8 +40,8 @@ User.create(:name => 'Graham', :email => 'graham@moomumedia.com', :password => '
 User.create(:name => 'Nerissa', :email => 'nerissa@moomumedia.com', :password => 'Patches123', :password_confirmation => 'Patches123')
 
 
-# FutureVisit.delete_all
-# FutureVisit.create(:user_id => 1, :restaurant_id => 2)
+FutureVisit.delete_all
+FutureVisit.create(:user => nicolas, :restaurant => crinitis)
 # FutureVisit.create(:user_id => 3, :restaurant_id => 1)
 # FutureVisit.create(:user_id => 4, :restaurant_id => 8)
 # FutureVisit.create(:user_id => 7, :restaurant_id => 7)
@@ -53,8 +53,8 @@ User.create(:name => 'Nerissa', :email => 'nerissa@moomumedia.com', :password =>
 # FutureVisit.create(:user_id => 4, :restaurant_id => 12)
 
 
-# Visit.delete_all
-# Visit.create(:user_id => 3, :restaurant_id => 1)
+Visit.delete_all
+# Visit.create(:user_id => 3, :restaurant_id => 1, :rating =>, :review => '')
 # Visit.create(:user_id => 2, :restaurant_id => 2)
 # Visit.create(:user_id => 5, :restaurant_id => 3)
 # Visit.create(:user_id => 8, :restaurant_id => 4)
@@ -66,21 +66,7 @@ User.create(:name => 'Nerissa', :email => 'nerissa@moomumedia.com', :password =>
 # Visit.create(:user_id => 2, :restaurant_id => 10)
 
 
-
-# Visit.delete_all
-# Visit.create(:user_id => 3, :restaurant_id => 1, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 2, :restaurant_id => 2, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 5, :restaurant_id => 3, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 8, :restaurant_id => 4, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 7, :restaurant_id => 5, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 9, :restaurant_id => 6, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 1, :restaurant_id => 7, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 6, :restaurant_id => 8, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 3, :restaurant_id => 9, :rating => 3, :review => "It was nice")
-# Visit.create(:user_id => 2, :restaurant_id => 10, :rating => 3, :review => "It was nice")
-
-
-# Friendship.delete_all
+Friendship.delete_all
 # Friendship.create(:owner_id => 15, :friend_id => 16, :accepted => nil)
 # Friendship.create(:owner_id => 26, :friend_id => 27, :accepted => true)
 # Friendship.create(:owner_id => 16, :friend_id => 17, :accepted => nil)

@@ -8,6 +8,8 @@ RestaurantApp::Application.routes.draw do
 
   post '/users/search' => 'users#search', :as => :user_search
 
+  post '/searches/search' => 'searches#search', :as => :search
+
   get '/restaurants/list' => 'restaurants#list', :as => :restaurant_list
 
   root 'restaurants#index'
@@ -17,6 +19,8 @@ RestaurantApp::Application.routes.draw do
     resources :future_visits
   end
 
+
+  post '/restaurants/:restaurant_id/:user_id/future_visits(.:format) ' => 'future_visits#create', :as => :recommend_restaurant
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

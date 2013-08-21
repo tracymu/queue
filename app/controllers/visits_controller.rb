@@ -15,7 +15,7 @@ class VisitsController < ApplicationController
       # if current_user.future_visits.exists?(:restaurant_id => @restaurant.id)
       #   redirect_to restaurant_future_visit_path(@restaurant, @future_visit), method: :delete 
       # else
-        redirect_to restaurant_path(@restaurant), :notice => "Visit Successfully Saved"  
+      redirect_to restaurant_path(@restaurant), :notice => "Visit Successfully Saved"  
       # end
 
     else
