@@ -2,10 +2,10 @@ class FutureVisitsController < ApplicationController
 
   before_action :find_restaurant, :only => [:new, :create, :destroy, :recommend]
 
-  def new
-		@future_visit = @restaurant.future_visits.new
-    recommend 
-	end
+ #  def new
+	# 	@future_visit = @restaurant.future_visits.new
+ #    recommend 
+	# end
 
 
   def recommend
@@ -16,7 +16,7 @@ class FutureVisitsController < ApplicationController
 
     @future_visit.user = @user
     if @future_visit.save
-      redirect_to restaurant_path(@restaurant), :notice => "Restaurant successfully added to your Queue"  
+      redirect_to restaurant_path(@restaurant), :notice => "Recommendation sent"  
     else
       render 'restaurant/show'
     end
