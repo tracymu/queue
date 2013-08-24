@@ -23,12 +23,9 @@
 	<%= render "users/user_data" %>
 
 	<% elsif @user.friendships.exists?(:friend_id => current_user.id, :accepted => true) %>
-
-			<p> You are friends with <%= @user.name %>
-				<HR>
-
-
-	<%= render "users/user_data" %>
+		<p> You are friends with <%= @user.name %>
+		<HR>
+		<%= render "users/user_data" %>
 
 	<% else %>
 
@@ -37,19 +34,7 @@
 		<% else %>
 			<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post'  %> to see <%= @user.name %>'s Queue </p>
 		<% end %>
-
-
-
 	<% end %>
-
-
-
-<!-- then this is the actual data for the user -->
-	
-
-
-	
-
 
 <% else %>
 	

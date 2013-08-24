@@ -2,10 +2,18 @@ class FutureVisitsController < ApplicationController
 
   before_action :find_restaurant, :only => [:new, :create, :destroy, :recommend]
 
+
+## I have this here, to show a new page, which will have a list of users I need to pick from.
+
  #  def new
 	# 	@future_visit = @restaurant.future_visits.new
  #    recommend 
 	# end
+
+  def index
+
+
+  end
 
 
   def recommend
@@ -25,9 +33,7 @@ class FutureVisitsController < ApplicationController
 
 
   def create
-    #It says param not found :future_visit - but I had used this same thing for VisitsController#create?
     @future_visit = @restaurant.future_visits.new 
-    #not sure why this bit below doesn't work.    
     @future_visit.user = current_user
 
     if @future_visit.save

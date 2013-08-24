@@ -20,7 +20,7 @@ RestaurantApp::Application.routes.draw do
   end
 
 
-  post '/restaurants/:restaurant_id/:user_id/future_visits(.:format) ' => 'future_visits#create', :as => :recommend_restaurant
+  post '/restaurants/:restaurant_id/:user_id/future_visits' => 'future_visits#create', :as => :recommend_restaurant
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

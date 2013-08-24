@@ -3,12 +3,12 @@
 <p>Help your friends out by rating and/or reviewing </p>
 
 <%= form_for [@restaurant, @visit] do |f| %>
-       <%= f.label :rating %>
+      <%= f.label :rating %>
       <%= f.text_field :rating %>
   
       <%= f.label :review %>
       <%= f.text_area :review %>
-		</br>
-    <%= f.submit %>
+			</br>
+    	<%= f.submit %>
 
 <% end %>

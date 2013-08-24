@@ -6,7 +6,7 @@
     <% if current_user %>
       <h1>...Add a Restaurant... </h1>
 
-       <%= link_to 'Add a Restaurant', new_restaurant_path, :class => 'btn btn-primary' %>
+      <%= link_to 'Add a Restaurant', new_restaurant_path, :class => 'btn btn-primary' %>
     <% else %>
        <h2><%= link_to 'Sign Up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %> </h2>
     <% end %>
@@ -17,7 +17,6 @@
   <div class = "span4">
 
     <% @restaurants.first(5).each do |restaurant| %>
-
       <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
       <p><%= restaurant.city %></p>
       <hr>
@@ -33,12 +32,8 @@
       <p>Can’t think of where to eat? Always go to the same places?</p>
       <p> Make every meal count with Queue</p>
       <hr>
-    <% end %>
-   
-    
+    <% end %>    
   </div>
 
 </div>
 
-
-<!-- if u.where(:friend_id => xx)

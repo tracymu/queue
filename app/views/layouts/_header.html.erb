@@ -2,7 +2,7 @@
   <ul class="nav nav-pills pull-right">
     <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "Restaurants", restaurant_list_path %></li>
-      <li> <%= form_tag search_path do %>
+    <li> <%= form_tag search_path do %>
       <%= text_field_tag 'search'  %>
       <%= submit_tag 'go'%>
     <% end %></li>

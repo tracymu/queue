@@ -24,10 +24,8 @@ class RestaurantsController < ApplicationController
 
 		if @restaurant.save
 			redirect_to new_restaurant_future_visit_path(@restaurant)
-						#somehow in here - if you create a restaurant, it should go in your queue, and so shoudl somehow 
-		#create a future_visits entry. So future_visits_controller#create ...somehow....
-			#@future_visit = Restaurant.future_visit.new params.require(:restaurant).permit(:)
-			# redirect_to restaurant_path(@restaurant), :notice => "Restaurant successfully added"			
+		else
+		render 'new'	
 		end
 
 	end
