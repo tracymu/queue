@@ -5,10 +5,11 @@ class FutureVisitsController < ApplicationController
 
 ## I have this here, to show a new page, which will have a list of users I need to pick from.
 
- #  def new
-	# 	@future_visit = @restaurant.future_visits.new
- #    recommend 
-	# end
+  def new
+		@future_visit = @restaurant.future_visits.new
+    #recommend 
+    create
+	end
 
   def index
 
@@ -16,20 +17,20 @@ class FutureVisitsController < ApplicationController
   end
 
 
-  def recommend
+  # def recommend
 
-    @future_visit = @restaurant.future_visits.new 
+  #   @future_visit = @restaurant.future_visits.new 
 
-    @user = User.find(params[:user_id])
+  #   @user = User.find(params[:user_id])
 
-    @future_visit.user = @user
-    if @future_visit.save
-      redirect_to restaurant_path(@restaurant), :notice => "Recommendation sent"  
-    else
-      render 'restaurant/show'
-    end
+  #   @future_visit.user = @user
+  #   if @future_visit.save
+  #     redirect_to restaurant_path(@restaurant), :notice => "Recommendation sent"  
+  #   else
+  #     render 'restaurant/show'
+  #   end
 
-  end
+  # end
 
 
   def create

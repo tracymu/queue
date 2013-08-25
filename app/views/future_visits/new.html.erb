@@ -1,9 +1,0 @@
-<h2>Who would you like to recommend <%= @restaurant.name %> to?</h2>
-
-	<ul>
-		<% current_user.friendships.where(:accepted => true).each do |friendship| %>
-			<li><%= link_to friendship.friend.name, recommend_restaurant_path(@restaurant, friendship.friend), :method => 'post' %></li>
-		<% end %>
-	</ul>
-
-<p> new page</p>
