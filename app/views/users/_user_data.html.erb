@@ -1,23 +1,32 @@
-<h2>Queued Restaurants</h2>
-<ul>
-	<% @user.future_visits.each do |future_visit| %>
-		<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
-	<% end %>
-</ul>
-<hr>
-<h2>Visited Restaurants</h2>
+<div class = "row">
+	  <div class = "col-md-1">
+  </div>
 
-<ul>
-	<% @user.visits.each do |visit| %>
-		<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
-	<% end %>
-</ul>
+	<div class = "col-md-4">
 
-<hr>
-<h2>Friends</h2>
+		<h2>Queued Restaurants</h2>
+		<ul>
+			<% @user.future_visits.each do |future_visit| %>
+				<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
+			<% end %>
+		</ul>
 
-<ul>
-	<% @user.friendships.where(:accepted => true).each do |friendship| %>
-		<li><%= link_to friendship.friend.name, user_path(friendship.friend) %> </li>
-	<% end %>
-</ul>
+		<h2>Visited Restaurants</h2>
+
+		<ul>
+			<% @user.visits.each do |visit| %>
+				<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class = "col-md-4">
+
+		<h2>Friends</h2>
+
+		<ul>
+			<% @user.friendships.where(:accepted => true).each do |friendship| %>
+				<li><%= link_to friendship.friend.name, user_path(friendship.friend) %> </li>
+			<% end %>
+		</ul>
+	</div>
+</div>

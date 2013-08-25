@@ -1,34 +1,38 @@
-<div class="masthead">
+
+<div class = "header">
   <ul class="nav nav-pills pull-right">
     <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "Restaurants", restaurant_list_path %></li>
-    <li> <%= form_tag search_path do %>
-      <%= text_field_tag 'search'  %>
-      <%= submit_tag 'go'%>
-    <% end %></li>
+   
     <% if current_user %>
-    		<li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
-    	  <li><%= link_to 'My Profile', user_path(current_user) %></li>
+    		<li><%= link_to 'My Profile', user_path(current_user) %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
+    	  
 		<% else %>
   			<li><%= link_to 'Sign in', new_user_session_path %> </li>
   			<li><%= link_to 'Sign Up', new_user_registration_path %></li>
 		<% end %>
   </ul>
-  
-  <% if current_user %>
-    <h3 class="muted"><%= link_to "My Queue", user_path(current_user) %></h3>
-  <% else %>
-    <h3 class="muted"><%= link_to "My Queue", root_path %></h3>
-  <% end %>
-  
-  <p class= "muted">Where We Like To Eat</p>
 
+  <span class = "navbar-form navbar-right">
+<%= form_tag search_path do %>
+      <%= text_field_tag 'search' %>
+      <%= submit_tag 'go'%>
+    <% end %>
+  </span>
+
+<% if current_user %>
+ <span id = "logo"><%= link_to "My Queue", user_path(current_user) %></span>
+<% else %>
+  <span id = "logo"><%= link_to "My Queue", root_path %></span>
+<% end %>
+  
 </div>
+
 
 <hr>
 
 <% if notice || alert %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <span class="alert alert-info"><%= notice %></span
+  <span class="alert alert-info"><%= alert %></span>
 <% end %>
-

@@ -1,17 +1,33 @@
 <h1><%= @restaurant.name %></h1>
 
 <div class = "row">
-
-	<div class = "span7">
-		<p>Website: <%= link_to @restaurant.website, @restaurant.website, :target => 'blank' %> </p>
-		<p>Location: <%= @restaurant.city %> </p>
+	  <div class = "col-md-1">
+  </div>
+	<div class = "col-md-5">
+		<strong>Website: </strong><%= link_to @restaurant.website, @restaurant.website, :target => 'blank' %> </br>
+		<strong>Location: </strong><%= @restaurant.city %> </br>
 		<% if current_user %>
-			<p>Average Rating By Your Friends:  <%= @restaurant.visits.average("rating").to_i %></p>
+			<strong>Average Rating By Your Friends:</strong> <%= @restaurant.visits.average("rating")%></br>
 		<% end %>
-		<em>If the details of this restaurant have changed, please submit a <a href="mailto:admin@moomumedia.com?Subject=Restaurant%20Update">change request</a></em>
+		</p>
+		</br>
+			<h3>Reviews by your friends</h3>
+
+	
+		<% @restaurant.visits.each do |visit| %>
+			
+			<strong><%= visit.user.name %></strong>
+			<p>Rated: <%= render_stars(visit.rating) %></br>
+			"<%= visit.review %>"</p>
+		<% end %>
+
+
+
+	</br>
+	</br>
 	</div>
 	<% if current_user %>
-		<div class = "span5">
+		<div class = "col-md-5">
 <!-- button for later, only show if you haven't been here -->
 
 
@@ -20,18 +36,16 @@
 
 			<% if current_user.visits.exists?(:restaurant_id => @restaurant.id) %>
 
-				<p>You've been to <%= @restaurant.name %> </p>
+				<p><span class="glyphicon glyphicon-star"></span> You've been to <%= @restaurant.name %> </p>
 
 			<% else %>
 
-	 			<%= link_to "I've been here", new_restaurant_visit_path(@restaurant), :class => 'btn btn-success' %>
+	 			<%= link_to "I've been here", new_restaurant_visit_path(@restaurant), :class => 'btn btn-primary' %>
 				</br>
 			
 			<% end %>
 
-			</br>
-
-			</br>
+			<hr>
 <!-- If restaurant is not in your queue, show this -->
 <!-- so I need another if statement here -->
 
@@ -40,7 +54,7 @@
 
 			<% else %>
 
-				<p>Want to go here in the future? Add to your Queue</p>
+				<p>Want to go here in the future?</p>
 				<%= link_to "Add to my queue", restaurant_future_visits_path(@restaurant), :method => 'post', :class => 'btn btn-primary' %>
 				</br>
 			<% end %>
@@ -61,19 +75,7 @@
 	</div>
 
 
-	<h3>Reviews by your friends</h3>
 
-
-	<% @restaurant.visits.each do |visit| %>
-		<hr>
-		<strong><%= visit.user.name %></strong>
-		<p>Rated: <%= render_stars(visit.rating) %></p>
-		<p><%= visit.review %></p>
-	<% end %>
-
-
-	</br>
-	</br>
 	
 <% else %>
 

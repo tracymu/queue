@@ -1,39 +1,47 @@
 <div class="row">
-  <div class="span4">
-  	<h1>Top Rated</h1>
+  <div class = "col-md-1">
   </div>
-  <div class = "span8">
+  <div class="col-md-5">
+  	<h2>Top Rated Restaurants</h2>
+  </div>
+  <div class = "col-md-6">
     <% if current_user %>
-      <h1>...Add a Restaurant... </h1>
+      <h2>Been somewhere new?</h2>
 
       <%= link_to 'Add a Restaurant', new_restaurant_path, :class => 'btn btn-primary' %>
     <% else %>
-       <h2><%= link_to 'Sign Up', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %> </h2>
+      </br>
+      <p>Can’t think of where to eat? Always go to the same places?</br>
+      Make every meal count with Queue</p>
     <% end %>
   </div>
 </div>
 
 <div class = "row">
-  <div class = "span4">
+  <div class = "col-md-1">
+  </div>
+    <div class = "col-md-5 ">
+      <div class = "restaurant_list"> 
+        <ul>
+        <% @restaurants.first(5).each do |restaurant| %>
+          <li><strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong></li>
+          <%= restaurant.city %>
+          <hr>
+        <% end %>
+      </ul>
+      </div>
 
-    <% @restaurants.first(5).each do |restaurant| %>
-      <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
-      <p><%= restaurant.city %></p>
-      <hr>
-    <% end %>
-
-    <p><%= link_to 'See all', restaurant_list_path %></p>
+        <p><%= link_to 'See all', restaurant_list_path %></p>
 
   </div>
-
-
-  <div class="span8">
+  <div class = "col-md-6">
     <% unless current_user %>
-      <p>Can’t think of where to eat? Always go to the same places?</p>
-      <p> Make every meal count with Queue</p>
-      <hr>
-    <% end %>    
+      <h2><%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-success btn-lg' %> or <%= link_to 'Sign in', new_user_session_path, :class => 'btn btn-primary btn-lg' %> </h2>
+    <% end %>
   </div>
+
+
+
 
 </div>
 
