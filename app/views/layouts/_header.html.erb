@@ -22,9 +22,9 @@
   </span>
 
 <% if current_user %>
- <span id = "logo"><%= link_to "Queue", user_path(current_user) %></span>
+ <span id = "logo_small"><%= link_to "Queue", user_path(current_user) %></span>
 <% else %>
-  <span id = "logo"><%= link_to "Queue", root_path %></span>
+  <span id = "logo_small"><%= link_to "Queue", root_path %></span>
 <% end %>
   
 </div>

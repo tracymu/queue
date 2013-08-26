@@ -4,13 +4,26 @@
     font-family: 'Lobster', Georgia, Times, serif;
     font-size: 56px;
     line-height: 80px;
-    color:red;
 
 }
+
+#logo_small {
+    font-family: 'Lobster', Georgia, Times, serif;
+    font-size: 31px;
+    line-height: 44px;
+
+}
+
+
+#logo_small a {
+	color: black;
+}
+
 
 #logo a {
-	/*color: black;*/
+  color: black;
 }
+
 
 .nav a {
 
@@ -62,7 +75,8 @@ h3 {
 }
  
 .restaurant_list li a:hover {
-  font-size: 15px;
+ color: #005580;
+    text-decoration: underline;
 }
 
 

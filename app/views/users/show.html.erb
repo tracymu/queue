@@ -19,15 +19,15 @@
 		<% if Friendship.exists?(:friend_id => current_user.id, :accepted => nil) %>
 			
 			<p>You have friend requests from </p>
-			<ul>
+			
 				<% Friendship.where(:friend_id => current_user.id, :accepted => nil).each do |friendship| %>
-					<li><%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> </li>
+					<%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> 
 				<% end %>
-			</ul>
+			
 			
 		<% end %>
 		
-	<%= render "users/user_data" %>
+		<%= render "users/user_data" %>
 
 	<% elsif @user.friendships.exists?(:friend_id => current_user.id, :accepted => true) %>
 		<p> You are friends with <%= @user.name %></p>
