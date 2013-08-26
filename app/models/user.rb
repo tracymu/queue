@@ -15,5 +15,9 @@ class User < ActiveRecord::Base
   	friendship = friendships.where(:friend_id => user.id).first
   	friendship.accepted? ? "Friend" : "Friendship pending"
   end
+
+  def to_s
+    name
+  end
   
 end

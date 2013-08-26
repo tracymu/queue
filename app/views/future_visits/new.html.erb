@@ -1,0 +1,11 @@
+<h2>Who would you like to recommend <%= @restaurant.name %> to?
+
+<%= form_for [@restaurant,@future_visit]  do |f| %>
+      <div>
+      <%= f.collection_select :user_id, current_user.friends, :id, :name, :include_blank => true, :class => 'dropdown-menu' %></div>
+  
+      
+			</br>
+    	<%= f.submit "Submit", :class => 'btn btn-primary' %>
+
+<% end %>

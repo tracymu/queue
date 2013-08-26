@@ -6,9 +6,7 @@ class FutureVisitsController < ApplicationController
 ## I have this here, to show a new page, which will have a list of users I need to pick from.
 
   def new
-		@future_visit = @restaurant.future_visits.new
-    #recommend 
-    create
+		@future_visit = @restaurant.future_visits.new   
 	end
 
   def index
@@ -17,28 +15,19 @@ class FutureVisitsController < ApplicationController
   end
 
 
-  # def recommend
-
-  #   @future_visit = @restaurant.future_visits.new 
-
-  #   @user = User.find(params[:user_id])
-
-  #   @future_visit.user = @user
-  #   if @future_visit.save
-  #     redirect_to restaurant_path(@restaurant), :notice => "Recommendation sent"  
-  #   else
-  #     render 'restaurant/show'
-  #   end
-
-  # end
-
-
   def create
     @future_visit = @restaurant.future_visits.new 
-    @future_visit.user = current_user
+
+    if params[:future_visit] && params[:future_visit][:user_id]
+      @future_visit.user = User.find(params[:future_visit][:user_id])
+      notice = "You've recommended this restaurant to #{@future_visit.user}"
+    else
+      @future_visit.user = current_user
+      notice = "Restaurant successfully added to queue"
+    end
 
     if @future_visit.save
-      redirect_to restaurant_path(@restaurant), :notice => "Restaurant successfully added to your Queue"  
+      redirect_to restaurant_path(@restaurant), :notice => notice
     else
       render 'restaurant/show'
     end

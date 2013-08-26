@@ -36,13 +36,14 @@
   <div class = "col-md-5">
     <h2>Friends</h2>
 
-    <ul>
+   
       <% current_user.friendships.where(:accepted => true).each do |friendship| %>
         <p><%= link_to friendship.friend.name, user_path(friendship.friend) %> </br>
+          <%= friendship.friend.visits.last %>
          Something about their latest visit</p>
 
       <% end %>
-    </ul>
+    
   </div>
 
 </div>
