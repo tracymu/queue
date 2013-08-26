@@ -5,9 +5,7 @@
 		<H1><%= @user.name %></H1>
 	</div>
 </div>
-<!-- Only logged in users can see this page information -->
-
- <div class = "row">
+<!-- Only logged in users can see this page information --><div class = "row">
   <div class = "col-md-1">
   </div>
 <% if current_user %>
@@ -23,10 +21,8 @@
 				<% Friendship.where(:friend_id => current_user.id, :accepted => nil).each do |friendship| %>
 					<%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> 
 				<% end %>
-			
-			
 		<% end %>
-		
+		<hr>
 		<%= render "users/user_data" %>
 
 	<% elsif @user.friendships.exists?(:friend_id => current_user.id, :accepted => true) %>
