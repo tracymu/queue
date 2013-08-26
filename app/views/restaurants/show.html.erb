@@ -12,7 +12,7 @@
 	
 		
 		</br>
-		<hr>
+	
 		<h3>Reviews by your friends</h3>
 
 		<% @restaurant.visits.each do |visit| %>			
@@ -39,7 +39,8 @@
 				<p><span class="glyphicon glyphicon-star"></span> You've been to <%= @restaurant.name %> </p>
 
 			<% else %>
-
+				</br>
+			</br>
 	 			<%= link_to "I've been here", new_restaurant_visit_path(@restaurant), :class => 'btn btn-primary' %>
 				</br>
 			
