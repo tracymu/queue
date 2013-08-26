@@ -4,11 +4,12 @@
     font-family: 'Lobster', Georgia, Times, serif;
     font-size: 56px;
     line-height: 80px;
+    color:red;
 
 }
 
 #logo a {
-	color: black;
+	/*color: black;*/
 }
 
 .nav a {
