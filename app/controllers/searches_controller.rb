@@ -5,8 +5,8 @@ class SearchesController < ApplicationController
 
 
 	def search
-		@users = User.where("name like?", "%#{params[:search]}%".upcase)
-		@restaurants = Restaurant.where("name like?", "%#{params[:search]}%".upcase)
+		@users = User.where("name ilike?", "%#{params[:search]}%")
+		@restaurants = Restaurant.where("name ilike?", "%#{params[:search]}%")
 	end
 
 
