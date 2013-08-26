@@ -1,23 +1,12 @@
+<% if current_user %>
+
 <div class="row">
   
   <div class = "col-md-1">
   </div>
   
   <div class="col-md-5">
-  	<h2>Top Rated Restaurants</h2>
-  </div>
-  
-  <div class = "col-md-6">
-    <% if current_user %>
-      <h2>Been somewhere new?</h2>
-
-      <%= link_to 'Add a Restaurant', new_restaurant_path, :class => 'btn btn-primary' %>
-    <% else %>
-      </br>
-      <p>Can’t think of where to eat? Always go to the same places?</br>
-      Make every meal count with Queue</p>
-    <% end %>
-
+    <h2>Top Rated Restaurants</h2>
   </div>
 
 </div>
@@ -40,13 +29,24 @@
     <p><%= link_to 'See all', restaurant_list_path %></p>
 
   </div>
- 
-  <div class = "col-md-6">
-    <% unless current_user %>
-   
-      <h2><%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-success btn-lg' %> or <%= link_to 'Sign in', new_user_session_path, :class => 'btn btn-primary btn-lg' %> </h2>
-    <% end %>
-  </div>
 
 </div>
 
+
+
+<% else %>
+
+<div class = "jumbotron">
+
+ <span id = "logo">My Queue</span>
+
+<p class = "lead">Can’t think of where to eat? Always go to the same places?</br>
+      Make every meal count with My Queue</p>
+
+      <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-success btn-lg' %> or <%= link_to 'Sign in', new_user_session_path, :class => 'btn btn-primary btn-lg' %>
+
+</div>
+
+
+
+<% end %>
