@@ -12,12 +12,15 @@
 	
 		
 		</br>
+		<hr>
 		<h3>Reviews by your friends</h3>
 
 		<% @restaurant.visits.each do |visit| %>			
-			<strong><%= visit.user.name %></strong>
+			<strong><%= visit.user.name %></strong>,  
+			<em><%= visit.created_at.strftime("%d %b. %Y") %></em>
 			<p>Rated: <%= render_stars(visit.rating) %></br>
 			"<%= visit.review %>"</p>
+			<hr>
 		<% end %>
 		<% end %>
 		</br>
