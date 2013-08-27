@@ -22,10 +22,11 @@
 			<% if Friendship.exists?(:friend_id => current_user.id, :accepted => nil) %>
 			
 				<p>You have friend requests from </p>
-			
 				<% Friendship.where(:friend_id => current_user.id, :accepted => nil).each do |friendship| %>
-					<%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> 
-				<% end %>
+					<div class ="col-md-1"></div>
+					<%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> </br>
+					<% end %>
+				
 			<% end %>
 			<hr>
 			<%= render "users/user_data" %>
