@@ -1,47 +1,52 @@
- <div class = "row">
+<div class = "row">
+ 	
  	<div class = "col-md-1">
   </div>
+	
 	<div class = "col-md-3">
 		<H1><%= @user.name %></H1>
 	</div>
+
 </div>
-<!-- Only logged in users can see this page information --><div class = "row">
-  <div class = "col-md-1">
+<!-- Only logged in users can see this page information -->
+<div class = "row">
+	<div class = "col-md-1">
   </div>
-<% if current_user %>
+
+	<% if current_user %>
 
 	<!-- Display at the top depends on whether this is your own user page or someone elses -->
 
-	<% if current_user == @user  %>
+		<% if current_user == @user  %>
 	
-		<% if Friendship.exists?(:friend_id => current_user.id, :accepted => nil) %>
+			<% if Friendship.exists?(:friend_id => current_user.id, :accepted => nil) %>
 			
-			<p>You have friend requests from </p>
+				<p>You have friend requests from </p>
 			
 				<% Friendship.where(:friend_id => current_user.id, :accepted => nil).each do |friendship| %>
 					<%= link_to User.find(friendship.owner_id).name, user_path(friendship.owner_id) %> | <%= link_to 'Accept Friendship', user_friendships_path(User.find(friendship.owner_id)), :method => 'post'   %> 
 				<% end %>
-		<% end %>
-		<hr>
-		<%= render "users/user_data" %>
+			<% end %>
+			<hr>
+			<%= render "users/user_data" %>
 
-	<% elsif @user.friendships.exists?(:friend_id => current_user.id, :accepted => true) %>
-		<p> You are friends with <%= @user.name %></p>
-		<hr>
-		<%= render "users/user_data" %>
+		<% elsif @user.friendships.exists?(:friend_id => current_user.id, :accepted => true) %>
+			<p> You are friends with <%= @user.name %></p>
+			<hr>
+			<%= render "users/user_data" %>
+
+		<% else %>
+
+			<% if current_user.friendships.exists?(:friend_id => @user.id) %>
+				<p><%= current_user.friendship_status_with(@user) %>
+			<% else %>
+				<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post'  %> to see <%= @user.name %>'s Queue </p>
+			<% end %>
+		<% end %>
 
 	<% else %>
-
-		<% if current_user.friendships.exists?(:friend_id => @user.id) %>
-			<p><%= current_user.friendship_status_with(@user) %>
-		<% else %>
-			<p><%= link_to 'Send a friend request', user_friendships_path(@user), :method => 'post'  %> to see <%= @user.name %>'s Queue </p>
-		<% end %>
-	<% end %>
-
-<% else %>
 	
-	<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %> to view <%= @user.name %>'s activity</p>
+		<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %> to view <%= @user.name %>'s activity</p>
 		
-<% end %>
+	<% end %>
 </div>

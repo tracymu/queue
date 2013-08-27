@@ -6,7 +6,7 @@ class Visit < ActiveRecord::Base
 	# after_save :update_average_rating
 
 
-
+#### I couldn't make this feature work yet without breaking other parts ####
 
 	# def update_average_rating 
 	# 	average_rating = Visit.average(:rating, :conditions => [ 'restaurant_id = ?', restaurant_id ] )

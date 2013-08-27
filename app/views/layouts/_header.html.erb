@@ -1,34 +1,32 @@
-
 <div class = "header">
   <ul class="nav nav-pills pull-right">
     <li><%= link_to "Home", root_path %></li>
     <li><%= link_to "Restaurants", restaurant_list_path %></li>
    
     <% if current_user %>
-    		<li><%= link_to 'My Profile', user_path(current_user) %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
+  		<li><%= link_to 'My Profile', user_path(current_user) %></li>
+      <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
     	  
 		<% else %>
-  			<li><%= link_to 'Sign in', new_user_session_path %> </li>
-  			<li><%= link_to 'Sign Up', new_user_registration_path %></li>
+			<li><%= link_to 'Sign in', new_user_session_path %> </li>
+			<li><%= link_to 'Sign Up', new_user_registration_path %></li>
 		<% end %>
   </ul>
 
   <span class = "navbar-form navbar-right">
-<%= form_tag search_path do %>
+    <%= form_tag search_path do %>
       <%= text_field_tag 'search' %>
       <%= submit_tag 'go'%>
     <% end %>
   </span>
 
-<% if current_user %>
- <span id = "logo_small"><%= link_to "Queue", user_path(current_user) %></span>
-<% else %>
-  <span id = "logo_small"><%= link_to "Queue", root_path %></span>
-<% end %>
+  <% if current_user %>
+    <span id = "logo_small"><%= link_to "Queue", user_path(current_user) %></span>
+  <% else %>
+    <span id = "logo_small"><%= link_to "Queue", root_path %></span>
+  <% end %>
   
 </div>
-
 
 <hr>
 

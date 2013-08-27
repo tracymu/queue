@@ -6,6 +6,7 @@ class VisitsController < ApplicationController
 		@visit = @restaurant.visits.new
 	end
 
+
   def create
     @visit = @restaurant.visits.new params.require(:visit).permit(:rating, :review)
     @visit.user = current_user

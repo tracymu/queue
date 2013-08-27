@@ -3,7 +3,7 @@ class FutureVisitsController < ApplicationController
   before_action :find_restaurant, :only => [:new, :create, :destroy, :recommend]
 
 
-## I have this here, to show a new page, which will have a list of users I need to pick from.
+  ## I have this here, to show a new page, which will have a list of users I need to pick from.
 
   def new
 		@future_visit = @restaurant.future_visits.new   

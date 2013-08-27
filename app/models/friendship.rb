@@ -15,6 +15,7 @@ class Friendship < ActiveRecord::Base
 			reciprocal_friendship.update_column(:accepted, true)
 			update_column(:accepted, true)
 		end
+		
 	end
 
 end

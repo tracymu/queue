@@ -20,7 +20,6 @@ class Restaurant < ActiveRecord::Base
 		unless self.website[/^http:\/\//] || self.website[/^https:\/\//]
 			self.website = 'http://' + self.website
 		end
-
 	end
 
 end
