@@ -3,7 +3,7 @@ class Visit < ActiveRecord::Base
 	belongs_to :user
 
 
-	after_save :update_average_rating
+	# after_save :update_average_rating
 
 
 
@@ -15,6 +15,10 @@ class Visit < ActiveRecord::Base
  #    restaurant.save
 	# 	end
 
+
+	def to_s
+		restaurant_id
+	end
 end
 
 

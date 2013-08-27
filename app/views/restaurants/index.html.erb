@@ -38,9 +38,10 @@
 
    
       <% current_user.friendships.where(:accepted => true).each do |friendship| %>
-        <p><%= link_to friendship.friend.name, user_path(friendship.friend) %> </br>
-          <%= friendship.friend.visits.last %>
-         Something about their latest visit</p>
+        <p><%= link_to friendship.friend.name, user_path(friendship.friend) %></br>
+        <%= Visit.last.created_at.strftime("%d %b. %Y") %> - Went to <%= Visit.last.restaurant.name %> 
+
+         </p>
 
       <% end %>
     

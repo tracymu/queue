@@ -36,7 +36,7 @@
 
 			<% if current_user.visits.exists?(:restaurant_id => @restaurant.id) %>
 
-				<p><span class="glyphicon glyphicon-star"></span> You've been to <%= @restaurant.name %> </p>
+				You've been to <%= @restaurant.name %> </p>
 
 			<% else %>
 				</br>
