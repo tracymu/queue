@@ -5,28 +5,55 @@
 	<div class = "col-md-4">
 
 		<h2>Queued Restaurants</h2>
-		<ul>
-			<% @user.future_visits.each do |future_visit| %>
-				<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
+		<% if @user.future_visits.exists? %>
+
+			<ul>
+				<% @user.future_visits.each do |future_visit| %>
+					<li><%= link_to future_visit.restaurant.name, restaurant_path(future_visit.restaurant) %> </li>
+				<% end %>
+			</ul>
+
+		<% else %>
+			<% if @user == current_user %>
+				<p>Nothing in your Queue yet? </p>
+				<%= link_to "Browse Restaurants", restaurant_list_path(@restaurant), :class => 'btn btn-primary' %>
+			<% else %>
+				<p><%= @user.name %> doesn't have any restaurants Queued yet </p>	
+				<%= link_to "Recommend a Restaurant", restaurant_list_path(@restaurant), :class => 'btn btn-primary' %>
 			<% end %>
-		</ul>
+		<% end %>
 
 		<h2>Visited Restaurants</h2>
+		<% if @user.visits.exists? %>
+			<ul>
+				<% @user.visits.each do |visit| %>
+					<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
+				<% end %>
+			</ul>
 
-		<ul>
-			<% @user.visits.each do |visit| %>
-				<li><%= link_to visit.restaurant.name, restaurant_path(visit.restaurant) %></li>
+		<% else %>
+			<% if @user == current_user %>
+				<p>You haven't registered any visits yet.</p>
+			<% else %>
+				<p><%= @user.name %> hasn't registered any visits yet.</p>	
 			<% end %>
-		</ul>
+		<% end %>
+
 	</div>
 	<div class = "col-md-4">
 
 		<h2>Friends</h2>
-
-		<ul>
-			<% @user.friendships.where(:accepted => true).each do |friendship| %>
-				<li><%= link_to friendship.friend.name, user_path(friendship.friend) %> </li>
+		<% if @user.friendships.exists? %>
+			<ul>
+				<% @user.friendships.where(:accepted => true).each do |friendship| %>
+					<li><%= link_to friendship.friend.name, user_path(friendship.friend) %> </li>
+				<% end %>
+			</ul>
+		<% else %>
+			<% if @user == current_user %>
+				<p>Use the search box above to find your friends</p>
 			<% end %>
-		</ul>
+		<% end %>
+
 	</div>
 </div>

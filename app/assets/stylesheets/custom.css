@@ -79,6 +79,10 @@ h3 {
     text-decoration: underline;
 }
 
+.nav li a:hover {
+  background-color: white;
+  color: #428bca;
+}
 
 
 html,

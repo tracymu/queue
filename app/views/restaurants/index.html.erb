@@ -10,7 +10,7 @@
     </div>
     
     <div class="col-md-5">
-      <h2>Friend's Activity</h2>
+      <h2>Recent's Activity</h2>
     </div>
   
   </div>
@@ -40,7 +40,12 @@
 
       <% current_user.friendships.where(:accepted => true).each do |friendship| %>
         <p><%= link_to friendship.friend.name, user_path(friendship.friend) %></br>
-        <%= Visit.last.created_at.strftime("%d %b. %Y") %> - Went to <%= Visit.last.restaurant.name %> </p>
+          <% friendship.friend.visits.each do | visit| %>
+            <p>Recently to <%= visit.restaurant.name %></p>
+          <% end %>
+
+
+
       <% end %>
       
     </div>

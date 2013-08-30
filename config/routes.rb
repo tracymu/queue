@@ -12,7 +12,8 @@ RestaurantApp::Application.routes.draw do
 
   get '/restaurants/list' => 'restaurants#list', :as => :restaurant_list
 
-  root 'restaurants#index'
+  # root 'restaurants#index'
+  root 'users#index'
   
 
   resources :restaurants do
