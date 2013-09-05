@@ -25,7 +25,7 @@
         <ul>
           <% @restaurants.first(5).each do |restaurant| %>
             <li><strong><%= link_to restaurant.name, restaurant_path(restaurant) %></strong></li>
-            <%= restaurant.city %>
+            <%= restaurant.location %>
             <hr>
           <% end %>
         </ul>

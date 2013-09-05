@@ -3,27 +3,33 @@
 <p>Help your friends out by rating and/or reviewing </p>
 
 <div class = "row">
-	<div class = "col-md-5">
+	<div class = "col-md-8">
 		<%= form_for [@restaurant, @visit] do |f| %>
-					<Strong>Rate Your visit: </Strong></br>
-		      <%= f.radio_button(:rating, "1") %>
-		      <%= f.label :rating, 1 %>
-					<%= f.radio_button(:rating, "2") %>
-		      <%= f.label :rating, 2 %>
-		      <%= f.radio_button(:rating, "3") %>
-		      <%= f.label :rating, 3 %>
-		      <%= f.radio_button(:rating, "4") %>
-		      <%= f.label :rating, 4 %>
-		      <%= f.radio_button(:rating, "5") %>
-		      <%= f.label :rating, 5 %>  </br>
-		      <%= f.label :review %></br>
-		      <%= f.text_area :review, :class => "form-control" %></br>
-					</br>
-		    	<%= f.submit "Submit", :class => 'btn btn-primary' %>
 
+ 			<% @visit.errors.full_messages.each do |msg| %>
+  			<p class="text-warning"><%= msg %></p>
+			<% end %>
+
+			<Strong>Rate Your visit: </Strong></br>
+      <%= f.radio_button(:rating, "1") %>
+      <%= f.label :rating, 1 %>
+			<%= f.radio_button(:rating, "2") %>
+      <%= f.label :rating, 2 %>
+      <%= f.radio_button(:rating, "3") %>
+      <%= f.label :rating, 3 %>
+      <%= f.radio_button(:rating, "4") %>
+      <%= f.label :rating, 4 %>
+      <%= f.radio_button(:rating, "5") %>
+      <%= f.label :rating, 5 %>  </br>
+    
+      <%= f.label :review %></br>
+      <%= f.text_area :review, :class => "form-control" %></br>
+			</br>
+
+		  <%= f.submit "Submit", :class => 'btn btn-primary' %>
 		<% end %>
-	</br>
+		</br>
 		<%= link_to 'Go back', restaurant_path(@restaurant) %>
-	</div>
 
+	</div>
 </div>

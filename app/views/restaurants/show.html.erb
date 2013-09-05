@@ -5,9 +5,9 @@
 	<div class = "col-md-5">
 		<h1><%= @restaurant.name %></h1>
 		<strong>Website: </strong><%= link_to @restaurant.website, @restaurant.website, :target => 'blank' %> </br>
-		<strong>Location: </strong><%= @restaurant.city %> </br>
+		<strong>Location: </strong><%= @restaurant.location %> </br>
 		<% if current_user %>
-			<strong>Average Rating By Your Friends:</strong> <%= @restaurant.visits.average("rating")%></br>
+			<strong>Average Rating:</strong> <%= @restaurant.visits.average("rating")%></br>
 			</br>
 			<h3>Reviews by your friends</h3>
 

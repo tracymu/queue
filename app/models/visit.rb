@@ -1,4 +1,8 @@
 class Visit < ActiveRecord::Base
+	
+	validates :rating, :presence => true
+
+
 	belongs_to :restaurant
 	belongs_to :user
 
