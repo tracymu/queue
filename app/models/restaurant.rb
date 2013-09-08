@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
 	
 	before_validation :fix_url_protocol
 
+	validates_uniqueness_of :name, :case_sensitive => false
 
 
 	# def average_rating
